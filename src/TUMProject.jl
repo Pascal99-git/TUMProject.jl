@@ -1,6 +1,6 @@
 module TUMProject
     
-    using LinearAlgebra, SparseArrays, Plots    # use packages
+    using LinearAlgebra, SparseArrays, Plots, Printf    # use packages
 
     #user's functions
     export uniform2dgrid,  
@@ -8,7 +8,7 @@ module TUMProject
            laplace2ddbc, 
            fastreactionsystem, 
            fastreactionlimitsystem, 
-           fastreactionlimitsystem2, 
+           #fastreactionlimitsystem2, 
            plotinitialconditions, 
            animatesystem, 
            plotcomparenorms

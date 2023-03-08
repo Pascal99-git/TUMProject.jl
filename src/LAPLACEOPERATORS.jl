@@ -23,8 +23,8 @@ struct Laplace2DDBC <: AbstractLaplaceOperator
    L 
 end 
 
-"""
-    laplace2dpbc(grid::AbstractGrid)
+@doc raw"""
+    laplace2dpbc(grid::AbstractGrid) -> Laplace2DPBC
 
 Initializes two dimensional Laplace operator with periodic boundary conditions on some grid.
 """
@@ -51,8 +51,12 @@ function laplace2dpbc(grid::AbstractGrid)
     Laplace2DPBC( sparse(L./h^2) )
 end
 
-"""
-    laplace2ddbc(grid::AbstractGrid)
+function Base.show(io::IO, model::Laplace2DPBC)
+    println(io, @sprintf "Laplace Operator with periodic boundary condtions")
+end
+
+@doc raw"""
+    laplace2ddbc(grid::AbstractGrid) -> Laplace2DDBC
 
 Initializes two dimensional Laplace operator with dirichlet boundary conditions on some grid.
 """
@@ -74,6 +78,10 @@ function laplace2ddbc(grid::AbstractGrid)
     L = dbc .* L
 
     Laplace2DDBC( sparse(L./h^2) )
+end
+
+function Base.show(io::IO, model::Laplace2DDBC)
+    println(io, @sprintf "Laplace Operator with dirichlet boundary condtions")
 end
 
 """

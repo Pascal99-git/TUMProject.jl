@@ -1,4 +1,4 @@
-"""
+@doc raw"""
     plotinitialconditions(x::AbstractArray, y::AbstractArray, x_name::String, y_name::String)
 
 Plots two initial condtions as heatmaps next to each other.
@@ -11,7 +11,7 @@ end
 
 
 
-"""
+@doc raw"""
     animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::AbstractArray, limit::AbstractArray, name::String)
 
 Creates an gif-animation of time dependent variables plottet as heatmaps next to each other.
@@ -27,8 +27,8 @@ end
 
 
 
-"""
-    animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::AbstractArray, limit::AbstractArray, name::String)
+@doc raw"""
+    plotcomparenorms(sol::Function, limitsol::Function, sol2::Function, limitsol2::Function, p::AbstractFloat, ts::AbstractArray, figlabel::String, figlabel2::String)
 
 Plots difference of L_p norms of time dependnt variables in time. 
 """

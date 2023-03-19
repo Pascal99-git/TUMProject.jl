@@ -10,8 +10,9 @@ abstract type AbstractLaplaceOperator end
 
 Two dimensional Laplace operator with periodic boundary conditions implemented.  
 """
-struct Laplace2DPBC <: AbstractLaplaceOperator
+struct Laplace2DPBC{G<:AbstractGrid} <: AbstractLaplaceOperator
    L 
+   grid::G
 end 
 
 """
@@ -19,8 +20,9 @@ end
 
 Two dimensional Laplace operator with dirichlet boundary conditions implemented.   
 """
-struct Laplace2DDBC <: AbstractLaplaceOperator
+struct Laplace2DDBC{G<:AbstractGrid} <: AbstractLaplaceOperator
    L 
+   grid::G
 end 
 
 @doc raw"""
@@ -28,7 +30,7 @@ end
 
 Initializes two dimensional Laplace operator with periodic boundary conditions on some grid.
 """
-function laplace2dpbc(grid::AbstractGrid)
+function laplace2dpbc(grid)
     n = grid.h_n
     N = grid.N
     h = grid.h_step
@@ -48,7 +50,7 @@ function laplace2dpbc(grid::AbstractGrid)
        L[i + (n-1), i] = 1
     end 
 
-    Laplace2DPBC( sparse(L./h^2) )
+    Laplace2DPBC( sparse(L./h^2), grid )
 end
 
 function Base.show(io::IO, model::Laplace2DPBC)
@@ -60,7 +62,7 @@ end
 
 Initializes two dimensional Laplace operator with dirichlet boundary conditions on some grid.
 """
-function laplace2ddbc(grid::AbstractGrid)
+function laplace2ddbc(grid)
     n = grid.h_n
     N = grid.N
     h = grid.h_step
@@ -77,7 +79,7 @@ function laplace2ddbc(grid::AbstractGrid)
     
     L = dbc .* L
 
-    Laplace2DDBC( sparse(L./h^2) )
+    Laplace2DDBC( sparse(L./h^2),grid )
 end
 
 function Base.show(io::IO, model::Laplace2DDBC)
@@ -89,7 +91,7 @@ end
 
     Creates two dimensional Laplace operator with periodic boundary conditions as a function of x.
 """
-(Δ::Laplace2DPBC)(x) = Δ.L * x
+    (Δ::Laplace2DPBC)(x) = Δ.L * x
 
 """
     Δ(x)

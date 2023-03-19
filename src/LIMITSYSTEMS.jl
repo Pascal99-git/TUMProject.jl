@@ -3,15 +3,15 @@
     
 Supertype of all limit systems.
 """
-abstract type AbstractLimitSystem{T} end
+abstract type AbstractLimitSystem{T<:AbstractFloat} end
 
 """
     FastReactionLimitSystem{T}  <: AbstractLimitSystem{T}
     
 A subtype of a limit system corresponding to a fast-reaction system.
 """
-struct FastReactionLimitSystem{T}  <: AbstractLimitSystem{T}
-    Δ::AbstractLaplaceOperator        # Diffusion operator
+struct FastReactionLimitSystem{L<:AbstractLaplaceOperator , T<:AbstractFloat}  <: AbstractLimitSystem{T}
+    Δ::L                              # Diffusion operator
     h::Function                       # f=0 solved for u
     g::Function                       # second reaction term
     D_v::T                            # second diffusion term

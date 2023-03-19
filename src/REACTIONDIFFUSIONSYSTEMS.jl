@@ -3,15 +3,15 @@
     
 Supertype of all reaction diffusion systems.
 """
-abstract type AbstractReactionDiffusionSystem{T} end
+abstract type AbstractReactionDiffusionSystem{T<:AbstractFloat} end
 
 """
-    FastReactionSystem{T}  <: AbstractReactionDiffusionSystem{T}
+    FastReactionSystem{L<:AbstractLaplaceOperator,T<:AbstractFloat}  <: AbstractReactionDiffusionSystem{T}
     
 Fast-Reaction system type. 
 """
-struct FastReactionSystem{T}  <: AbstractReactionDiffusionSystem{T}
-    Δ::AbstractLaplaceOperator        # Diffusion operator
+struct FastReactionSystem{L<:AbstractLaplaceOperator,T<:AbstractFloat}  <: AbstractReactionDiffusionSystem{T}
+    Δ::L                              # Diffusion operator
     f::Function                       # first reaction term
     g::Function                       # second reaction term
     D_u::T                            # first diffusion term

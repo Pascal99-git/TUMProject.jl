@@ -10,9 +10,9 @@ abstract type AbstractGrid end
     
 A subtype of grid. Quadratic grid with equidistant points.
 """
-struct Uniform2DGrid <: AbstractGrid
-    h_axis  # horizontal axis
-    v_axis  # vertical axis
+struct Uniform2DGrid{A<:AbstractRange} <: AbstractGrid
+    h_axis::A  # horizontal axis
+    v_axis::A  # vertical axis
     h_n     # total number of of points horizontally
     v_n     # total number of points vertically
     h_step  # horizonatal space step
@@ -27,7 +27,7 @@ end
 
 Creates uniform grid using discrete uniform horzontal and vertical axis.
 """
-function uniform2dgrid(h_axis::AbstractRange, v_axis::AbstractRange)
+function uniform2dgrid(h_axis, v_axis)
     h_n = length(h_axis)
     v_n = length(v_axis)
     @assert h_n == v_n

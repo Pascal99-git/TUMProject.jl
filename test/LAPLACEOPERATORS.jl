@@ -4,7 +4,7 @@
         x = -2:2
         grid = uniform2dgrid(x, x)
         operator = laplace2dpbc(grid)
-        @test operator(1:25)) == [30.0,
+        @test operator(1:25) == [30.0,
   25.0,
   25.0,
   25.0,

@@ -1,5 +1,5 @@
 @doc raw"""
-    plotinitialconditions(x::AbstractArray, y::AbstractArray, x_name::String, y_name::String)
+   plotinitialconditions(x::A, y::A, x_name::String, y_name::String) where {A<:AbstractArray}
 
 Plots two initial condtions as heatmaps next to each other.
 """
@@ -10,9 +10,9 @@ function plotinitialconditions(x::A, y::A, x_name::String, y_name::String) where
 end
 
 @doc raw"""
-    animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::AbstractArray, limit::AbstractArray, name::String)
+    animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::R, limit::A, name::String, fps::Float64) where {A<:AbstractArray, R<:AbstractRange}
 
-Creates an gif-animation of time dependent variables plottet as heatmaps next to each other.
+Creates an gif-animation of time dependent variables plotted as heatmaps next to each other.
 """
 function animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::R, limit::A, name::String, fps::Float64) where {A<:AbstractArray, R<:AbstractRange}
     animation = @animate for t in ts
@@ -24,8 +24,8 @@ function animatesystem(x::Function, y::Function, x_name::String, y_name::String,
 end
 
 @doc raw"""
-    plotcomparenorms(sol::Function, limitsol::Function, sol2::Function, limitsol2::Function, p::AbstractFloat, ts::AbstractArray, figlabel::String, figlabel2::String)
-
+    plotcomparenorms(sol::Function, limitsol::Function, sol2::Function, limitsol2::Function, p::Float64, ts::R, figlabel::String, figlabel2::String) where {R<:AbstractRange}
+        
 Plots difference of L_p norms of time dependnt variables in time. 
 """
 function plotcomparenorms(sol::Function, limitsol::Function, sol2::Function, limitsol2::Function, p::Float64, ts::R, figlabel::String, figlabel2::String) where {R<:AbstractRange}

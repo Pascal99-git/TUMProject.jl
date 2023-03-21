@@ -9,8 +9,6 @@ function plotinitialconditions(x::A, y::A, x_name::String, y_name::String) where
     return plot(plotx, ploty, layout = (1, 2), size = (1000, 400))
 end
 
-
-
 @doc raw"""
     animatesystem(x::Function, y::Function, x_name::String, y_name::String, ts::AbstractArray, limit::AbstractArray, name::String)
 
@@ -24,8 +22,6 @@ function animatesystem(x::Function, y::Function, x_name::String, y_name::String,
     end
     return gif(animation, name*".gif", fps=fps)
 end
-
-
 
 @doc raw"""
     plotcomparenorms(sol::Function, limitsol::Function, sol2::Function, limitsol2::Function, p::AbstractFloat, ts::AbstractArray, figlabel::String, figlabel2::String)

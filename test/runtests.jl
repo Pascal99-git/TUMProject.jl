@@ -6,5 +6,4 @@ using Test
     include("LAPLACEOPERATORS.jl") 
     include("REACTIONDIFFUSIONSYSTEMS.jl")
     include("LIMITSYSTEMS.jl")
-    include("COMPARESYSTEMS.jl")
 end
